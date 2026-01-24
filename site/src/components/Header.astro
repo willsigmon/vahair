@@ -1,0 +1,112 @@
+---
+const navLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="group relative z-10" data-magnetic="0.2">
+      <span class="text-xl tracking-wide text-[--color-charcoal]" style="font-family: var(--font-display); font-weight: 500;">
+        Virginia Page & Co.
+      </span>
+    </a>
+    
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-12">
+      {navLinks.map(link => (
+        <a 
+          href={link.href} 
+          class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 transition-opacity"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/book" class="btn btn-primary ml-4">
+        Book Now
+      </a>
+    </div>
+    
+    <!-- Mobile Menu Button -->
+    <button 
+      id="mobile-menu-btn"
+      class="md:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+      aria-label="Toggle menu"
+    >
+      <span class="menu-line w-6 h-px bg-current transition-all duration-300"></span>
+      <span class="menu-line w-6 h-px bg-current transition-all duration-300"></span>
+    </button>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[--color-cream] z-40 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 md:hidden">
+    <nav class="text-center stagger-children">
+      {navLinks.map(link => (
+        <a 
+          href={link.href} 
+          class="block text-4xl mb-6 tracking-wide hover:text-[--color-gold] transition-colors"
+          style="font-family: var(--font-display);"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a href="/book" class="btn btn-primary mt-8">
+        Book Now
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-24"></div>
+
+<style>
+  #header.scrolled {
+    background: rgba(250, 247, 242, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(45, 42, 38, 0.05);
+  }
+  
+  #header.scrolled nav {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  #mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  #mobile-menu-btn.active .menu-line:first-child {
+    transform: rotate(45deg) translate(2px, 2px);
+  }
+  
+  #mobile-menu-btn.active .menu-line:last-child {
+    transform: rotate(-45deg) translate(2px, -2px);
+  }
+</style>
+
+<script>
+  // Scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  });
+  
+  // Mobile menu
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuBtn?.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+    document.body.style.overflow = mobileMenu?.classList.contains('active') ? 'hidden' : '';
+  });
+</script>

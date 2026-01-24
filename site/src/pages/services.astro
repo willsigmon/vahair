@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const haircuts = [
+  { name: "Women's Haircut", price: "$50" },
+  { name: "Men's Haircut", price: "$30" },
+  { name: "Children's Cut (10 & under)", price: "$30" },
+  { name: "Blowdry Style", price: "$45+" },
+];
+
+const colorServices = [
+  { name: "Root Touch Up", price: "$105" },
+  { name: "All Over Color", price: "$135" },
+  { name: "Halo Foil", price: "$125" },
+  { name: "Partial Foil", price: "$145" },
+  { name: "Full Foil", price: "$185" },
+  { name: "Color/Foil Combination", price: "$220" },
+  { name: "Glaze (Toner)", price: "$85" },
+];
+
+const extras = [
+  { name: "Brazilian Blowout", price: "$325+" },
+  { name: "Eyebrow Tint", price: "$45" },
+  { name: "Eyebrow Wax", price: "$25" },
+  { name: "Lip Wax", price: "$25" },
+  { name: "Chin Wax", price: "$25" },
+];
+---
+
+<Layout
+  title="Hair Services & Pricing | Virginia Page & Co. Hair Studio"
+  description="Haircuts from $30, color from $95, Brazilian blowouts & more. View our full service menu and pricing."
+>
+  <!-- Hero -->
+  <section class="pt-16 pb-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-4 block">Menu</span>
+      <h1 class="display-lg mb-8" style="font-family: var(--font-display);">
+        Our Services
+      </h1>
+      <p class="text-xl text-[--color-taupe] max-w-2xl mx-auto">
+        From precision cuts to stunning color transformations, we offer a full range of hair services.
+      </p>
+    </div>
+  </section>
+
+  <!-- Haircuts -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-6 mb-12">
+        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">01</span>
+        <div>
+          <h2 class="text-3xl" style="font-family: var(--font-display);">Haircuts</h2>
+          <p class="text-[--color-taupe]">Precision cuts tailored to you</p>
+        </div>
+      </div>
+
+      <div class="space-y-0">
+        {haircuts.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-cream-dark] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10">
+        <a
+          href="https://vahair.as.me/schedule.php?appointmentType=category:Haircuts"
+          target="_blank"
+          class="btn btn-outline"
+        >
+          Book a Haircut
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color -->
+  <section class="py-20 px-6 bg-[--color-cream-dark]">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-6 mb-12">
+        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">02</span>
+        <div>
+          <h2 class="text-3xl" style="font-family: var(--font-display);">Hair Color</h2>
+          <p class="text-[--color-taupe]">From subtle to stunning</p>
+        </div>
+      </div>
+
+      <div class="space-y-0">
+        {colorServices.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="mt-6 text-sm text-[--color-taupe] italic">
+        * Color services do not include haircut or blowdry. These may be added as separate services.
+      </p>
+
+      <div class="mt-10">
+        <a
+          href="https://vahair.as.me/schedule.php?appointmentType=category:Color"
+          target="_blank"
+          class="btn btn-outline"
+        >
+          Book Color Service
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extras -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-6 mb-12">
+        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">03</span>
+        <div>
+          <h2 class="text-3xl" style="font-family: var(--font-display);">Extras</h2>
+          <p class="text-[--color-taupe]">Treatments & finishing touches</p>
+        </div>
+      </div>
+
+      <div class="space-y-0">
+        {extras.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-cream-dark] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10">
+        <a
+          href="https://vahair.as.me/schedule.php?appointmentType=category:Waxing"
+          target="_blank"
+          class="btn btn-outline"
+        >
+          Book Extras
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer & CTA -->
+  <section class="py-24 px-6 bg-[--color-charcoal] text-[--color-cream]">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-lg text-[--color-cream]/70 mb-10 max-w-2xl mx-auto">
+        All prices are subject to change per consultation before service. Final pricing may vary based on hair length, thickness, and condition.
+      </p>
+      <a
+        href="/book"
+        class="btn btn-primary bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold]"
+      >
+        Book Your Appointment
+      </a>
+    </div>
+  </section>
+</Layout>

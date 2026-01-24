@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Expert hair services in downtown Rolesville, NC. Cuts, color, highlights, Brazilian blowouts & more. Book online today." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.vahair.studio/" />
+    
+    <!-- Geo -->
+    <meta name="geo.region" content="US-NC" />
+    <meta name="geo.placename" content="Rolesville" />
+    <meta name="geo.position" content="35.9232013;-78.4577758" />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HairSalon",
+      "name": "Virginia Page & Co. Hair Studio",
+      "url": "https://www.vahair.studio",
+      "telephone": "+1-919-671-8353",
+      "email": "vacohairstudio@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "104 South Main Street",
+        "addressLocality": "Rolesville",
+        "addressRegion": "NC",
+        "postalCode": "27571",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.9232013,
+        "longitude": -78.4577758
+      },
+      "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:15", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:15", "closes": "16:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:30", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "14:00"}
+      ],
+      "priceRange": "$$"
+    }
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Scroll Progress Bar -->
+    <div data-scroll-progress class="fixed top-0 left-0 h-[2px] bg-[--color-gold] z-[9999] pointer-events-none" style="width: 0%;"></div>
+
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Animations -->
+    <script src="../scripts/animations.js"></script>
+  </body>
+</html>

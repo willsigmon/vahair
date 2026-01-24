@@ -64,18 +64,18 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Image Grid -->
         <div class="grid grid-cols-2 gap-4">
-          <div class="img-frame aspect-[3/4] bg-[--color-cream-dark] mt-12" data-img-reveal data-tilt="5">
+          <div class="img-frame aspect-square bg-[--color-cream-dark] mt-12" data-img-reveal data-tilt="5">
             <img
               src="/images/salon.jpg"
               alt="Virginia Page & Co. Hair Studio"
               class="w-full h-full object-cover"
             />
           </div>
-          <div class="img-frame aspect-[3/4] bg-[--color-cream-dark]" data-img-reveal data-tilt="5">
+          <div class="img-frame aspect-square bg-[--color-cream-dark]" data-img-reveal data-tilt="5">
             <img
               src="/images/virginia.jpg"
               alt="Virginia Page Watkins"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover object-top"
             />
           </div>
         </div>
@@ -138,11 +138,11 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid lg:grid-cols-2 gap-8">
         <!-- Virginia -->
         <div class="group relative overflow-hidden bg-[--color-cream-dark]">
-          <div class="aspect-[4/5]">
+          <div class="aspect-square">
             <img
               src="/images/virginia.jpg"
               alt="Virginia Page Watkins"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-transparent to-transparent"></div>
@@ -162,11 +162,11 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Kim -->
         <div class="group relative overflow-hidden bg-[--color-cream-dark]">
-          <div class="aspect-[4/5]">
+          <div class="aspect-square">
             <img
               src="/images/kim.jpg"
               alt="Kim Latham"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
           </div>
           <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-transparent to-transparent"></div>

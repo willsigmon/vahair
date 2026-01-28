@@ -43,8 +43,10 @@ export const STYLISTS: Stylist[] = [
     id: 13454517,
     name: 'Alyssa',
     fullName: 'Alyssa',
-    image: '/images/placeholder-stylist.svg',
+    image: '/images/salon.jpg',
     role: 'Stylist',
+    experience: 'Stylist',
+    imagePosition: 'object-center',
     bookingUrl: 'https://vahair.as.me/?calendarID=13454517',
   },
 ];

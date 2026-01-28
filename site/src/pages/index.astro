@@ -17,7 +17,7 @@ const stylists = getHomepageStylists();
         alt=""
         class="w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-black/30"></div>
+      <div class="absolute inset-0 bg-black/45"></div>
     </div>
 
     <!-- Content -->
@@ -33,7 +33,7 @@ const stylists = getHomepageStylists();
         Do it<span class="text-[--color-gold]">.</span>
       </p>
       <div class="animate-fade-up" style="animation-delay: 0.8s;">
-        <a href="/book" class="btn btn-primary bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold]">
+        <a href="/book" class="btn btn-primary btn-hero-cta bg-[--color-cream] text-[--color-charcoal] border-[--color-cream] hover:bg-[--color-gold] hover:border-[--color-gold] text-base px-8 py-4">
           Book Your Appointment
         </a>
       </div>
@@ -105,27 +105,39 @@ const stylists = getHomepageStylists();
       <!-- Service Cards -->
       <div class="grid md:grid-cols-3 gap-8 mb-16" data-stagger="0.15">
         <!-- Haircuts -->
-        <div class="card p-10 text-center hover-lift" data-tilt="8">
-          <span class="text-5xl mb-6 block" style="font-family: var(--font-display);">01</span>
+        <div class="card p-10 text-center hover-lift border-t-4 border-t-[--color-gold]" data-tilt="8">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[--color-gold]/10 flex items-center justify-center">
+            <svg class="w-8 h-8 text-[--color-gold]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/>
+            </svg>
+          </div>
           <h3 class="text-2xl mb-4" style="font-family: var(--font-display);">Haircuts</h3>
           <p class="text-[--color-taupe] mb-6">Precision cuts tailored to your unique style, face shape, and lifestyle.</p>
-          <p class="text-2xl font-light text-[--color-gold]">From $30</p>
+          <p class="text-3xl font-medium text-[--color-gold]">From $30</p>
         </div>
 
         <!-- Color -->
-        <div class="card p-10 text-center hover-lift" data-tilt="8">
-          <span class="text-5xl mb-6 block" style="font-family: var(--font-display);">02</span>
+        <div class="card p-10 text-center hover-lift border-t-4 border-t-[--color-blush]" data-tilt="8">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[--color-blush]/30 flex items-center justify-center">
+            <svg class="w-8 h-8 text-[--color-taupe]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+            </svg>
+          </div>
           <h3 class="text-2xl mb-4" style="font-family: var(--font-display);">Hair Color</h3>
           <p class="text-[--color-taupe] mb-6">From subtle highlights to bold transformations that turn heads.</p>
-          <p class="text-2xl font-light text-[--color-gold]">From $95</p>
+          <p class="text-3xl font-medium text-[--color-gold]">From $95</p>
         </div>
 
         <!-- Treatments -->
-        <div class="card p-10 text-center hover-lift" data-tilt="8">
-          <span class="text-5xl mb-6 block" style="font-family: var(--font-display);">03</span>
+        <div class="card p-10 text-center hover-lift border-t-4 border-t-[--color-taupe]" data-tilt="8">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[--color-taupe]/10 flex items-center justify-center">
+            <svg class="w-8 h-8 text-[--color-taupe]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
           <h3 class="text-2xl mb-4" style="font-family: var(--font-display);">Treatments</h3>
           <p class="text-[--color-taupe] mb-6">Brazilian blowouts and specialty treatments for silky, frizz-free hair.</p>
-          <p class="text-2xl font-light text-[--color-gold]">From $325</p>
+          <p class="text-3xl font-medium text-[--color-gold]">From $325</p>
         </div>
       </div>
 
@@ -140,7 +152,7 @@ const stylists = getHomepageStylists();
   <!-- Stylists Preview -->
   <section class="py-32 px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="grid lg:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {stylists.map((stylist) => (
           <div class="group relative overflow-hidden bg-[--color-cream-dark]">
             <div class="aspect-square">
@@ -153,7 +165,7 @@ const stylists = getHomepageStylists();
                 ]}
               />
             </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-[--color-charcoal]/30 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]">
               <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">
                 {stylist.role}
@@ -253,8 +265,11 @@ const stylists = getHomepageStylists();
     </div>
   </section>
 
+  <!-- Section Transition -->
+  <div class="h-24 bg-gradient-to-b from-[--color-charcoal] to-[--color-cream-dark]"></div>
+
   <!-- Instagram Section -->
-  <section class="py-32 px-6 bg-[--color-cream-dark]">
+  <section class="py-24 px-6 bg-[--color-cream-dark]">
     <div class="max-w-7xl mx-auto">
       <!-- Header -->
       <div class="text-center max-w-2xl mx-auto mb-16">
@@ -297,15 +312,16 @@ const stylists = getHomepageStylists();
   </section>
 
   <!-- Final CTA -->
-  <section class="py-32 px-6 text-center">
+  <section class="py-32 px-6 text-center bg-gradient-to-b from-[--color-cream-dark] to-[--color-cream]">
     <div class="max-w-3xl mx-auto">
+      <div class="divider mx-auto mb-8"></div>
       <h2 class="display-lg mb-8 text-balance" style="font-family: var(--font-display);">
         Ready for your transformation?
       </h2>
       <p class="text-xl text-[--color-taupe] mb-12 max-w-xl mx-auto">
         Book your appointment today and let us help you feel beautiful.
       </p>
-      <a href="/book" class="btn btn-primary">
+      <a href="/book" class="btn btn-primary text-base px-10 py-4 glow-pulse">
         Book Your Appointment
       </a>
     </div>

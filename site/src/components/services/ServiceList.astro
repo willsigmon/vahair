@@ -1,0 +1,118 @@
+---
+/**
+ * Dynamic service list component
+ * Fetches services from API at build time with fallback
+ */
+import type { ServiceCategory, Service } from '../../lib/acuity/types';
+
+interface Props {
+  categories?: ServiceCategory[];
+  class?: string;
+}
+
+// Fallback data (used during SSG if API unavailable)
+const fallbackCategories: ServiceCategory[] = [
+  {
+    name: 'Haircuts',
+    slug: 'haircuts',
+    services: [
+      { id: 1, name: "Women's Haircut", price: '$50', duration: 45, category: 'Haircuts', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Haircuts' },
+      { id: 2, name: "Men's Haircut", price: '$30', duration: 30, category: 'Haircuts', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Haircuts' },
+      { id: 3, name: "Children's Cut (10 & under)", price: '$30', duration: 30, category: 'Haircuts', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Haircuts' },
+      { id: 4, name: 'Blowdry Style', price: '$45+', duration: 30, category: 'Haircuts', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Haircuts' },
+    ],
+  },
+  {
+    name: 'Color',
+    slug: 'color',
+    services: [
+      { id: 5, name: 'Root Touch Up', price: '$105', duration: 90, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+      { id: 6, name: 'All Over Color', price: '$135', duration: 120, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+      { id: 7, name: 'Halo Foil', price: '$125', duration: 120, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+      { id: 8, name: 'Partial Foil', price: '$145', duration: 120, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+      { id: 9, name: 'Full Foil', price: '$185', duration: 150, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+      { id: 10, name: 'Color/Foil Combination', price: '$220', duration: 180, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+      { id: 11, name: 'Glaze (Toner)', price: '$85', duration: 45, category: 'Color', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Color' },
+    ],
+  },
+  {
+    name: 'Extras',
+    slug: 'extras',
+    services: [
+      { id: 12, name: 'Brazilian Blowout', price: '$325+', duration: 120, category: 'Extras', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Waxing' },
+      { id: 13, name: 'Eyebrow Tint', price: '$45', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Waxing' },
+      { id: 14, name: 'Eyebrow Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Waxing' },
+      { id: 15, name: 'Lip Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Waxing' },
+      { id: 16, name: 'Chin Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://vahair.as.me/schedule.php?appointmentType=category:Waxing' },
+    ],
+  },
+];
+
+const { categories = fallbackCategories, class: className = '' } = Astro.props;
+
+// Category display config
+const categoryConfig: Record<string, { number: string; subtitle: string; bgClass: string }> = {
+  'Haircuts': { number: '01', subtitle: 'Precision cuts tailored to you', bgClass: '' },
+  'Color': { number: '02', subtitle: 'From subtle to stunning', bgClass: 'bg-[--color-cream-dark]' },
+  'Extras': { number: '03', subtitle: 'Treatments & finishing touches', bgClass: '' },
+  'Waxing': { number: '03', subtitle: 'Treatments & finishing touches', bgClass: '' },
+};
+---
+
+<div class:list={['service-list', className]}>
+  {categories.map((category, idx) => {
+    const config = categoryConfig[category.name] || {
+      number: String(idx + 1).padStart(2, '0'),
+      subtitle: '',
+      bgClass: idx % 2 === 1 ? 'bg-[--color-cream-dark]' : '',
+    };
+
+    return (
+      <section class:list={['py-20 px-6', config.bgClass]}>
+        <div class="max-w-4xl mx-auto">
+          <div class="flex items-center gap-6 mb-12">
+            <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">
+              {config.number}
+            </span>
+            <div>
+              <h2 class="text-3xl" style="font-family: var(--font-display);">{category.name}</h2>
+              <p class="text-[--color-taupe]">{config.subtitle}</p>
+            </div>
+          </div>
+
+          <div class="space-y-0">
+            {category.services.map((service) => (
+              <div class:list={[
+                'group flex justify-between items-baseline py-5 border-b transition-colors',
+                config.bgClass ? 'border-[--color-blush] hover:border-[--color-gold]' : 'border-[--color-cream-dark] hover:border-[--color-gold]'
+              ]}>
+                <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">
+                  {service.name}
+                </span>
+                <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">
+                  {service.price}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {category.name === 'Color' && (
+            <p class="mt-6 text-sm text-[--color-taupe] italic">
+              * Color services do not include haircut or blowdry. These may be added as separate services.
+            </p>
+          )}
+
+          <div class="mt-10">
+            <a
+              href={`https://vahair.as.me/schedule.php?appointmentType=category:${encodeURIComponent(category.name)}`}
+              target="_blank"
+              class="btn btn-outline"
+            >
+              Book {category.name}
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+  })}
+</div>

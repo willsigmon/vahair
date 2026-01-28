@@ -1,0 +1,245 @@
+---
+/**
+ * Displays next available time slot for a stylist
+ * Features mind-blowing animations when slot is available
+ */
+interface Props {
+  calendarId: number;
+  class?: string;
+}
+
+const { calendarId, class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={['next-slot-badge inline-flex items-center gap-2 relative', className]}
+  data-calendar-id={calendarId}
+>
+  <!-- Loading state -->
+  <span class="loading-state inline-flex items-center gap-2 text-xs text-[--color-taupe]">
+    <span class="loading-dot w-2 h-2 bg-[--color-cream-dark] rounded-full"></span>
+    <span class="loading-text">Checking...</span>
+  </span>
+
+  <!-- Available state (hidden by default) -->
+  <span class="available-state hidden inline-flex items-center gap-2 text-xs">
+    <!-- Animated pulse dot with glow -->
+    <span class="availability-dot relative">
+      <span class="dot-core w-2 h-2 bg-[--color-gold] rounded-full relative z-10"></span>
+      <span class="dot-pulse absolute inset-0 bg-[--color-gold] rounded-full"></span>
+      <span class="dot-glow absolute -inset-1 bg-[--color-gold]/30 rounded-full blur-sm"></span>
+    </span>
+    <span class="slot-text text-[--color-gold] font-medium">Next: —</span>
+  </span>
+
+  <!-- Unavailable state (hidden by default) -->
+  <span class="unavailable-state hidden inline-flex items-center gap-2 text-xs text-[--color-taupe]">
+    <span class="w-2 h-2 bg-[--color-taupe]/30 rounded-full"></span>
+    <span>Check availability</span>
+  </span>
+
+  <!-- Sparkle particles (for wow factor) -->
+  <div class="sparkle-container absolute -inset-4 pointer-events-none overflow-hidden hidden">
+    <div class="sparkle sparkle-1"></div>
+    <div class="sparkle sparkle-2"></div>
+    <div class="sparkle sparkle-3"></div>
+  </div>
+</div>
+
+<script>
+  // Client-side hydration for availability badges
+  const CACHE_DURATION = 30 * 1000; // 30 seconds
+  const cache = new Map<number, { data: any; timestamp: number }>();
+
+  async function fetchNextSlot(calendarId: number) {
+    // Check cache first
+    const cached = cache.get(calendarId);
+    if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+      return cached.data;
+    }
+
+    try {
+      const response = await fetch(`/api/availability/next-slot?calendarId=${calendarId}`);
+      const result = await response.json();
+
+      // Cache the result
+      cache.set(calendarId, { data: result.data, timestamp: Date.now() });
+
+      return result.data;
+    } catch (error) {
+      console.error('Error fetching availability:', error);
+      return null;
+    }
+  }
+
+  function updateBadge(badge: Element, slotData: any | null) {
+    const loadingState = badge.querySelector('.loading-state') as HTMLElement;
+    const availableState = badge.querySelector('.available-state') as HTMLElement;
+    const unavailableState = badge.querySelector('.unavailable-state') as HTMLElement;
+    const sparkleContainer = badge.querySelector('.sparkle-container') as HTMLElement;
+
+    loadingState.classList.add('hidden');
+
+    if (slotData && slotData.displayText) {
+      availableState.classList.remove('hidden');
+      const slotText = availableState.querySelector('.slot-text');
+      if (slotText) {
+        slotText.textContent = `Next: ${slotData.displayText}`;
+      }
+
+      // Trigger sparkle animation for "Today" or "Tomorrow"
+      if (slotData.relativeText === 'Today' || slotData.relativeText === 'Tomorrow') {
+        sparkleContainer?.classList.remove('hidden');
+        setTimeout(() => {
+          sparkleContainer?.classList.add('hidden');
+        }, 2000);
+      }
+    } else {
+      unavailableState.classList.remove('hidden');
+    }
+  }
+
+  // Initialize all badges on page load
+  async function initBadges() {
+    const badges = document.querySelectorAll('[data-calendar-id]');
+
+    // Fetch all in parallel
+    const promises = Array.from(badges).map(async (badge) => {
+      const calendarId = parseInt(badge.getAttribute('data-calendar-id') || '0', 10);
+      if (calendarId) {
+        const slotData = await fetchNextSlot(calendarId);
+        updateBadge(badge, slotData);
+      }
+    });
+
+    await Promise.all(promises);
+  }
+
+  // Run on initial load
+  initBadges();
+
+  // Re-run on navigation (Astro View Transitions)
+  document.addEventListener('astro:page-load', initBadges);
+</script>
+
+<style>
+  /* Loading animation */
+  .loading-dot {
+    animation: loading-bounce 1.4s infinite ease-in-out;
+  }
+
+  .loading-text {
+    animation: loading-fade 1.4s infinite ease-in-out;
+  }
+
+  @keyframes loading-bounce {
+    0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+    40% { transform: scale(1.2); opacity: 1; }
+  }
+
+  @keyframes loading-fade {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* Availability dot animations */
+  .availability-dot {
+    position: relative;
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+
+  .dot-core {
+    animation: dot-beat 2s infinite ease-in-out;
+  }
+
+  .dot-pulse {
+    animation: dot-pulse-expand 2s infinite ease-out;
+  }
+
+  .dot-glow {
+    animation: dot-glow 2s infinite ease-in-out;
+  }
+
+  @keyframes dot-beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  @keyframes dot-pulse-expand {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  @keyframes dot-glow {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+
+  /* Sparkle particles */
+  .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, var(--color-gold), #fff);
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  .sparkle-container:not(.hidden) .sparkle {
+    animation: sparkle-fly 1s ease-out forwards;
+  }
+
+  .sparkle-1 {
+    left: 50%;
+    top: 50%;
+    animation-delay: 0s;
+  }
+
+  .sparkle-2 {
+    left: 30%;
+    top: 50%;
+    animation-delay: 0.2s;
+  }
+
+  .sparkle-3 {
+    left: 70%;
+    top: 50%;
+    animation-delay: 0.4s;
+  }
+
+  @keyframes sparkle-fly {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -150%) scale(1.5);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -300%) scale(0.5);
+    }
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Slot text entrance animation */
+  .available-state .slot-text {
+    animation: slot-text-entrance 0.5s ease-out;
+  }
+
+  @keyframes slot-text-entrance {
+    0% {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

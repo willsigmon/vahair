@@ -1,0 +1,168 @@
+---
+/**
+ * Interactive stylist availability card with wow-factor animations
+ * Shows real-time availability with beautiful hover effects
+ */
+import NextSlotBadge from '../availability/NextSlotBadge.astro';
+
+interface Props {
+  id: number;
+  name: string;
+  fullName: string;
+  image: string;
+  role?: string;
+  class?: string;
+}
+
+const {
+  id,
+  name,
+  fullName,
+  image,
+  role = 'Stylist',
+  class: className = '',
+} = Astro.props;
+
+const bookingUrl = `https://vahair.as.me/?calendarID=${id}`;
+---
+
+<a
+  href={bookingUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={['stylist-card group relative block', className]}
+  data-stylist-card
+>
+  <!-- Glow effect on hover -->
+  <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[--color-gold]/0 via-[--color-gold]/20 to-[--color-gold]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
+
+  <!-- Card content -->
+  <div class="relative flex items-center gap-4 p-5 bg-white rounded-xl border border-[--color-cream-dark] transition-all duration-300 group-hover:border-[--color-gold]/30 group-hover:shadow-xl group-hover:shadow-[--color-gold]/5 overflow-hidden">
+    <!-- Shimmer effect -->
+    <div class="shimmer absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent group-hover:animate-shimmer"></div>
+
+    <!-- Avatar with ring effect -->
+    <div class="avatar-container relative">
+      <div class="avatar-ring absolute -inset-1 rounded-full bg-gradient-to-tr from-[--color-gold] via-[--color-blush] to-[--color-gold] opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-60"></div>
+      <img
+        src={image}
+        alt={fullName}
+        class="relative w-16 h-16 rounded-full object-cover object-top border-2 border-white shadow-lg transition-transform duration-300 group-hover:scale-105"
+      />
+      <!-- Online indicator -->
+      <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-400 border-2 border-white rounded-full shadow-lg">
+        <span class="absolute inset-0 bg-green-400 rounded-full animate-ping opacity-75"></span>
+      </span>
+    </div>
+
+    <!-- Info -->
+    <div class="flex-1 min-w-0">
+      <p class="text-xs text-[--color-gold] font-medium uppercase tracking-wider mb-0.5">{role}</p>
+      <h3 class="text-lg font-semibold text-[--color-charcoal] truncate group-hover:text-[--color-gold] transition-colors duration-300">
+        {fullName}
+      </h3>
+      <div class="mt-1">
+        <NextSlotBadge calendarId={id} />
+      </div>
+    </div>
+
+    <!-- Arrow with animation -->
+    <div class="arrow-container relative w-10 h-10 flex items-center justify-center">
+      <div class="arrow-bg absolute inset-0 rounded-full bg-[--color-cream-dark] transition-all duration-300 group-hover:bg-[--color-gold] group-hover:scale-110"></div>
+      <svg
+        class="relative w-5 h-5 text-[--color-taupe] transition-all duration-300 group-hover:text-white group-hover:translate-x-0.5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+
+    <!-- Confetti burst on click (hidden, activated via JS) -->
+    <div class="confetti-container absolute inset-0 pointer-events-none overflow-hidden hidden">
+      {Array(12).fill(0).map((_, i) => (
+        <div class={`confetti confetti-${i + 1}`}></div>
+      ))}
+    </div>
+  </div>
+</a>
+
+<script>
+  // Add click celebration animation
+  document.querySelectorAll('[data-stylist-card]').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      const confettiContainer = card.querySelector('.confetti-container');
+      if (confettiContainer) {
+        confettiContainer.classList.remove('hidden');
+        // Don't prevent default - let the link work
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Shimmer animation */
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .group-hover\:animate-shimmer {
+    animation: shimmer 0.8s ease-in-out;
+  }
+
+  /* Ping animation for online indicator */
+  @keyframes ping {
+    0% { transform: scale(1); opacity: 1; }
+    75%, 100% { transform: scale(2); opacity: 0; }
+  }
+
+  .animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  /* Confetti particles */
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  .confetti-container:not(.hidden) .confetti {
+    animation: confetti-burst 0.8s ease-out forwards;
+  }
+
+  @keyframes confetti-burst {
+    0% {
+      opacity: 1;
+      transform: translate(0, 0) scale(0);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: var(--confetti-end) scale(1);
+    }
+  }
+
+  .confetti-1 { --confetti-end: translate(-60px, -40px); background: var(--color-gold); left: 50%; top: 50%; animation-delay: 0s; }
+  .confetti-2 { --confetti-end: translate(60px, -50px); background: var(--color-blush); left: 50%; top: 50%; animation-delay: 0.05s; }
+  .confetti-3 { --confetti-end: translate(-40px, 50px); background: var(--color-gold); left: 50%; top: 50%; animation-delay: 0.1s; }
+  .confetti-4 { --confetti-end: translate(50px, 40px); background: #c9a87c; left: 50%; top: 50%; animation-delay: 0.15s; }
+  .confetti-5 { --confetti-end: translate(-70px, 10px); background: var(--color-blush); left: 50%; top: 50%; animation-delay: 0.05s; }
+  .confetti-6 { --confetti-end: translate(70px, -10px); background: var(--color-gold); left: 50%; top: 50%; animation-delay: 0.1s; }
+  .confetti-7 { --confetti-end: translate(-30px, -60px); background: #c9a87c; left: 50%; top: 50%; animation-delay: 0.15s; }
+  .confetti-8 { --confetti-end: translate(30px, 60px); background: var(--color-blush); left: 50%; top: 50%; animation-delay: 0s; }
+  .confetti-9 { --confetti-end: translate(-50px, -30px) rotate(45deg); background: var(--color-gold); left: 50%; top: 50%; animation-delay: 0.08s; border-radius: 0; }
+  .confetti-10 { --confetti-end: translate(45px, 35px) rotate(-30deg); background: #c9a87c; left: 50%; top: 50%; animation-delay: 0.12s; border-radius: 0; }
+  .confetti-11 { --confetti-end: translate(-55px, 25px) rotate(60deg); background: var(--color-blush); left: 50%; top: 50%; animation-delay: 0.03s; border-radius: 0; }
+  .confetti-12 { --confetti-end: translate(40px, -45px) rotate(-45deg); background: var(--color-gold); left: 50%; top: 50%; animation-delay: 0.07s; border-radius: 0; }
+
+  .hidden {
+    display: none !important;
+  }
+</style>

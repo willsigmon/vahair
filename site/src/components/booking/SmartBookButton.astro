@@ -1,0 +1,45 @@
+---
+/**
+ * Smart booking button that shows next available slot
+ */
+import NextSlotBadge from '../availability/NextSlotBadge.astro';
+
+interface Props {
+  calendarId: number;
+  stylistName: string;
+  variant?: 'primary' | 'outline' | 'ghost';
+  class?: string;
+  showAvailability?: boolean;
+}
+
+const {
+  calendarId,
+  stylistName,
+  variant = 'primary',
+  class: className = '',
+  showAvailability = true,
+} = Astro.props;
+
+const bookingUrl = `https://vahair.as.me/?calendarID=${calendarId}`;
+
+const variantClasses = {
+  primary: 'btn btn-primary',
+  outline: 'btn btn-outline',
+  ghost: 'btn btn-ghost',
+};
+---
+
+<div class:list={['smart-book-button flex flex-col items-start gap-2', className]}>
+  {showAvailability && (
+    <NextSlotBadge calendarId={calendarId} />
+  )}
+  <a
+    href={bookingUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class={variantClasses[variant]}
+    data-magnetic
+  >
+    Book with {stylistName}
+  </a>
+</div>

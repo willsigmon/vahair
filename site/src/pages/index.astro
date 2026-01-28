@@ -1,5 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import NextSlotBadge from '../components/availability/NextSlotBadge.astro';
+
+// Stylist data with calendar IDs
+const stylists = [
+  {
+    id: 7785532,
+    name: 'Virginia Page Watkins',
+    role: 'Owner & Stylist',
+    experience: '14 years of experience',
+    image: '/images/virginia.jpg',
+    imagePosition: 'object-top',
+  },
+  {
+    id: 8172243,
+    name: 'Kim Latham',
+    role: 'Stylist',
+    experience: '20 years of experience',
+    image: '/images/kim.jpg',
+    imagePosition: 'object-[center_20%]',
+  },
+];
 ---
 
 <Layout title="Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon">
@@ -136,53 +157,38 @@ import Layout from '../layouts/Layout.astro';
   <section class="py-32 px-6">
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Virginia -->
-        <div class="group relative overflow-hidden bg-[--color-cream-dark]">
-          <div class="aspect-square">
-            <img
-              src="/images/virginia.jpg"
-              alt="Virginia Page Watkins"
-              class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
+        {stylists.map((stylist) => (
+          <div class="group relative overflow-hidden bg-[--color-cream-dark]">
+            <div class="aspect-square">
+              <img
+                src={stylist.image}
+                alt={stylist.name}
+                class:list={[
+                  'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105',
+                  stylist.imagePosition,
+                ]}
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]">
+              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">
+                {stylist.role}
+              </span>
+              <h3 class="text-3xl mb-2" style="font-family: var(--font-display);">
+                {stylist.name}
+              </h3>
+              <p class="text-[--color-cream]/70 mb-2">{stylist.experience}</p>
+              <NextSlotBadge calendarId={stylist.id} class="mb-4" />
+              <a
+                href={`https://vahair.as.me/?calendarID=${stylist.id}`}
+                target="_blank"
+                class="btn btn-outline border-[--color-cream] text-[--color-cream] hover:bg-[--color-cream] hover:text-[--color-charcoal]"
+              >
+                Book with {stylist.name.split(' ')[0]}
+              </a>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-transparent to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]">
-            <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Owner & Stylist</span>
-            <h3 class="text-3xl mb-2" style="font-family: var(--font-display);">Virginia Page Watkins</h3>
-            <p class="text-[--color-cream]/70 mb-4">14 years of experience</p>
-            <a
-              href="https://vahair.as.me/?calendarID=7785532"
-              target="_blank"
-              class="btn btn-outline border-[--color-cream] text-[--color-cream] hover:bg-[--color-cream] hover:text-[--color-charcoal]"
-            >
-              Book with Virginia
-            </a>
-          </div>
-        </div>
-
-        <!-- Kim -->
-        <div class="group relative overflow-hidden bg-[--color-cream-dark]">
-          <div class="aspect-square">
-            <img
-              src="/images/kim.jpg"
-              alt="Kim Latham"
-              class="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-[--color-charcoal]/90 via-transparent to-transparent"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-8 text-[--color-cream]">
-            <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block">Stylist</span>
-            <h3 class="text-3xl mb-2" style="font-family: var(--font-display);">Kim Latham</h3>
-            <p class="text-[--color-cream]/70 mb-4">20 years of experience</p>
-            <a
-              href="https://vahair.as.me/?calendarID=8172243"
-              target="_blank"
-              class="btn btn-outline border-[--color-cream] text-[--color-cream] hover:bg-[--color-cream] hover:text-[--color-charcoal]"
-            >
-              Book with Kim
-            </a>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>

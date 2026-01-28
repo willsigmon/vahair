@@ -46,8 +46,8 @@ const navLinks = [
   </nav>
   
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 bg-[--color-cream] z-40 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 md:hidden">
-    <nav class="text-center stagger-children">
+  <div id="mobile-menu" class="fixed inset-0 bg-[--color-cream] z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 md:hidden">
+    <nav class="text-center">
       {navLinks.map(link => (
         <a 
           href={link.href} 
@@ -81,7 +81,7 @@ const navLinks = [
   
   #mobile-menu.active {
     opacity: 1;
-    pointer-events: auto;
+    visibility: visible;
   }
   
   #mobile-menu-btn.active .menu-line:first-child {

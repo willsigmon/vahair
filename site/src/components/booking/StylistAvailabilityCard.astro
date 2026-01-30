@@ -33,17 +33,17 @@ const bookingUrl = `https://vahair.as.me/?calendarID=${id}`;
   class:list={['stylist-card group relative block', className]}
   data-stylist-card
 >
-  <!-- Glow effect on hover -->
-  <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[--color-gold]/0 via-[--color-gold]/20 to-[--color-gold]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
+  <!-- Glow effect on hover - enhanced gold intensity -->
+  <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[--color-gold]/0 via-[--color-gold]/40 to-[--color-gold]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
 
   <!-- Card content -->
   <div class="relative flex items-center gap-4 p-5 bg-white rounded-xl border border-[--color-cream-dark] transition-all duration-300 group-hover:border-[--color-gold]/30 group-hover:shadow-xl group-hover:shadow-[--color-gold]/5 overflow-hidden">
     <!-- Shimmer effect -->
     <div class="shimmer absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent group-hover:animate-shimmer"></div>
 
-    <!-- Avatar with ring effect -->
+    <!-- Avatar with ring effect - stronger gold glow -->
     <div class="avatar-container relative">
-      <div class="avatar-ring absolute -inset-1 rounded-full bg-gradient-to-tr from-[--color-gold] via-[--color-blush] to-[--color-gold] opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-60"></div>
+      <div class="avatar-ring absolute -inset-1 rounded-full bg-gradient-to-tr from-[--color-gold] via-[--color-blush] to-[--color-gold] opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-80"></div>
       <img
         src={image}
         alt={fullName}

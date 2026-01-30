@@ -321,6 +321,84 @@ body {
 }
 
 /* ================================
+   GOLD & GLOW UTILITIES
+   ================================ */
+
+/* Text glow - subtle gold for headings */
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(196, 169, 98, 0.3);
+}
+
+/* Text glow - stronger emphasis */
+.text-glow-gold-strong {
+  text-shadow:
+    0 0 15px rgba(196, 169, 98, 0.5),
+    0 0 30px rgba(196, 169, 98, 0.3);
+}
+
+/* Multi-layer text shadow for readability on images */
+.overlay-text-strong {
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.8),
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Gold border glow on hover */
+.border-glow-gold {
+  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.border-glow-gold:hover {
+  box-shadow:
+    0 0 0 1px rgba(196, 169, 98, 0.3),
+    0 0 20px rgba(196, 169, 98, 0.15);
+}
+
+/* Stronger gradient overlay for text on images */
+.gradient-overlay-strong {
+  background: linear-gradient(
+    to top,
+    rgba(45, 42, 38, 0.95) 0%,
+    rgba(45, 42, 38, 0.85) 20%,
+    rgba(45, 42, 38, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+/* Gold accent line - decorative divider */
+.gold-accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 169, 98, 0.5), transparent);
+}
+
+/* Gold button glow on hover */
+.btn-glow-gold:hover {
+  box-shadow: 0 0 30px rgba(196, 169, 98, 0.4);
+}
+
+/* Card gold glow effect */
+.card-glow-gold {
+  transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-glow-gold:hover {
+  box-shadow:
+    0 20px 60px -20px rgba(45, 42, 38, 0.2),
+    0 0 30px rgba(196, 169, 98, 0.15);
+}
+
+/* Service card icon gold ring on hover */
+.icon-ring-gold {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.group:hover .icon-ring-gold {
+  box-shadow: 0 0 0 4px rgba(196, 169, 98, 0.2);
+  transform: scale(1.05);
+}
+
+/* ================================
    MARQUEE
    ================================ */
 .marquee {

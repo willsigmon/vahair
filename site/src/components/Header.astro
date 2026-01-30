@@ -20,14 +20,14 @@ const navLinks = [
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-12">
       {navLinks.map(link => (
-        <a 
-          href={link.href} 
-          class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 transition-opacity"
+        <a
+          href={link.href}
+          class="text-sm tracking-widest uppercase link-underline opacity-80 hover:opacity-100 hover:text-[--color-gold] transition-all duration-300"
         >
           {link.label}
         </a>
       ))}
-      <a href="/book" class="btn btn-primary ml-4">
+      <a href="/book" class="btn btn-primary ml-4 hover:shadow-[0_0_25px_rgba(196,169,98,0.4)] transition-shadow duration-300">
         Book Now
       </a>
     </div>

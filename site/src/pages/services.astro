@@ -25,6 +25,44 @@ const extras = [
   { name: "Lip Wax", price: "$25" },
   { name: "Chin Wax", price: "$25" },
 ];
+
+// Alyssa's specialty services
+const alyssaLightening = [
+  { name: "Full Lightening w/ Blow Dry", price: "$275" },
+  { name: "Full Lightening w/ Cut", price: "$300" },
+  { name: "Partial Lightening w/ Blow Dry", price: "$250" },
+  { name: "Partial Lightening w/ Cut", price: "$275" },
+  { name: "Face-Frame w/ Blow Dry", price: "$150" },
+  { name: "Face-Frame w/ Cut", price: "$175" },
+];
+
+const alyssaColor = [
+  { name: "Partial Single Process (Roots) w/ Blow Dry", price: "$125" },
+  { name: "Partial Single Process w/ Cut", price: "$150" },
+  { name: "Full Single Process (All-Over) w/ Blow Dry", price: "$150" },
+  { name: "Full Single Process w/ Cut", price: "$175" },
+  { name: "Glaze w/ Blow Dry", price: "$95" },
+  { name: "Glaze w/ Cut", price: "$125" },
+  { name: "Express Roots w/ Blow Dry", price: "$110" },
+  { name: "Express Roots w/ Cut", price: "$135" },
+  { name: "Additional Color", price: "$20" },
+];
+
+const alyssaHaircuts = [
+  { name: "Haircut (60 min)", price: "$60" },
+  { name: "Haircut (30 min)", price: "$30" },
+];
+
+const alyssaTreatments = [
+  { name: "K18 Treatment", price: "$30" },
+  { name: "Smoothing Treatment", price: "$180+" },
+];
+
+const alyssaExtensions = [
+  { name: "Extension Consultation", price: "$30" },
+  { name: "Move-Up (1 Row)", price: "$150" },
+  { name: "Move-Up (2 Row)", price: "$300" },
+];
 ---
 
 <Layout
@@ -139,6 +177,91 @@ const extras = [
           class="btn btn-outline"
         >
           Book Extras
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alyssa's Services -->
+  <section class="py-20 px-6 bg-[--color-cream-dark]">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-6 mb-6">
+        <span class="text-6xl font-light text-[--color-gold]" style="font-family: var(--font-display);">04</span>
+        <div>
+          <h2 class="text-3xl" style="font-family: var(--font-display);">Alyssa's Services</h2>
+          <p class="text-[--color-taupe]">Lived-in color & dimensional blonding specialist</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-[--color-taupe] italic mb-12">
+        Alyssa specializes in adult women's hair services only. All lightening services include a glaze. Add root coverage to any lightening appointment for additional $50.
+      </p>
+
+      <!-- Lightening Services -->
+      <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Lightening Services</h3>
+      <div class="space-y-0 mb-12">
+        {alyssaLightening.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Color Services -->
+      <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Color Services</h3>
+      <div class="space-y-0 mb-12">
+        {alyssaColor.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Haircuts -->
+      <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Haircuts</h3>
+      <div class="space-y-0 mb-12">
+        {alyssaHaircuts.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Treatments -->
+      <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Treatments</h3>
+      <div class="space-y-0 mb-12">
+        {alyssaTreatments.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Extensions -->
+      <h3 class="text-xl mb-6" style="font-family: var(--font-display);">Extensions</h3>
+      <div class="space-y-0">
+        {alyssaExtensions.map(service => (
+          <div class="group flex justify-between items-baseline py-5 border-b border-[--color-blush] hover:border-[--color-gold] transition-colors">
+            <span class="text-lg group-hover:text-[--color-charcoal] transition-colors">{service.name}</span>
+            <span class="text-lg font-light text-[--color-taupe] group-hover:text-[--color-gold] transition-colors">{service.price}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-4 text-sm text-[--color-taupe] italic">
+        * New extension installs require a consultation first.
+      </p>
+
+      <div class="mt-10">
+        <a
+          href="https://vahair.as.me/?calendarID=13454517"
+          target="_blank"
+          class="btn btn-outline"
+        >
+          Book with Alyssa
         </a>
       </div>
     </div>

@@ -16,7 +16,7 @@ const navLinks = [
         class="h-20 md:h-32 lg:h-48 w-auto"
       />
     </a>
-    
+
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-12">
       {navLinks.map(link => (
@@ -31,7 +31,7 @@ const navLinks = [
         Book Now
       </a>
     </div>
-    
+
     <!-- Mobile Menu Button (44x44 minimum touch target for accessibility) -->
     <button
       id="mobile-menu-btn"
@@ -44,25 +44,25 @@ const navLinks = [
       <span class="menu-line w-6 h-px bg-current transition-all duration-300"></span>
     </button>
   </nav>
-  
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 bg-[--color-cream] z-[100] flex items-center justify-center opacity-0 invisible transition-all duration-300 md:hidden">
-    <nav class="text-center">
-      {navLinks.map(link => (
-        <a 
-          href={link.href} 
-          class="block text-4xl mb-6 tracking-wide hover:text-[--color-gold] transition-colors"
-          style="font-family: var(--font-display);"
-        >
-          {link.label}
-        </a>
-      ))}
-      <a href="/book" class="btn btn-primary mt-8">
-        Book Now
-      </a>
-    </nav>
-  </div>
 </header>
+
+<!-- Mobile Menu - OUTSIDE header for proper stacking context -->
+<div id="mobile-menu" class="fixed inset-0 bg-[--color-cream] z-[9990] flex items-center justify-center opacity-0 invisible pointer-events-none transition-all duration-300 md:hidden">
+  <nav class="text-center">
+    {navLinks.map(link => (
+      <a
+        href={link.href}
+        class="block text-4xl mb-6 tracking-wide hover:text-[--color-gold] transition-colors"
+        style="font-family: var(--font-display);"
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="/book" class="btn btn-primary mt-8">
+      Book Now
+    </a>
+  </nav>
+</div>
 
 <!-- Spacer for fixed header -->
 <div class="h-24"></div>
@@ -82,6 +82,7 @@ const navLinks = [
   #mobile-menu.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
   
   #mobile-menu-btn.active .menu-line:first-child {

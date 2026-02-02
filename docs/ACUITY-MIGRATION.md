@@ -28,7 +28,7 @@
 | **Kim Calendar ID** | `13484780` |
 | **Alyssa Calendar ID** | `13484805` |
 | **ACUITY_USER_ID** | `38274584` |
-| **ACUITY_API_KEY** | `1d51bbb610e887799f6fba08051b76` |
+| **ACUITY_API_KEY** | `1d51bbb6101e887799f6fba080751b76` |
 | **Account Type** | Standalone |
 
 ---

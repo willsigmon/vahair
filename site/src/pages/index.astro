@@ -147,10 +147,9 @@ const stylists = getHomepageStylists();
                 ]}
               />
             </div>
-            <!-- Feathered edge above solid panel -->
-            <div class="absolute bottom-[45%] left-0 right-0 h-[12%]" style="background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7))"></div>
-            <!-- Dark panel for text -->
-            <div class="absolute bottom-0 left-0 right-0 p-8 text-white" style="background: rgba(0,0,0,0.7)">
+            <!-- Gradient overlay for text legibility -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-40% to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
               <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block font-bold">
                 {stylist.role}
               </span>

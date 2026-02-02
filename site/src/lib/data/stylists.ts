@@ -20,34 +20,34 @@ export interface Stylist {
  */
 export const STYLISTS: Stylist[] = [
   {
-    id: 7785532,
+    id: 13484734,
     name: 'Virginia',
     fullName: 'Virginia Page Watkins',
     image: '/images/virginia.jpg',
     role: 'Owner & Stylist',
     experience: '14 years of experience',
     imagePosition: 'object-top',
-    bookingUrl: 'https://vahair.as.me/?calendarID=7785532',
+    bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484734',
   },
   {
-    id: 8172243,
+    id: 13484780,
     name: 'Kim',
     fullName: 'Kim Latham',
     image: '/images/kim.jpg',
     role: 'Stylist',
     experience: '20 years of experience',
     imagePosition: 'object-center',
-    bookingUrl: 'https://vahair.as.me/?calendarID=8172243',
+    bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484780',
   },
   {
-    id: 13454517,
+    id: 13484805,
     name: 'Alyssa',
     fullName: 'Alyssa',
     image: '/images/alyssa.jpg',
     role: 'Color Specialist',
     experience: '6 years of experience',
     imagePosition: 'object-top',
-    bookingUrl: 'https://vahair.as.me/?calendarID=13454517',
+    bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484805',
   },
 ];
 

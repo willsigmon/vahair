@@ -61,5 +61,6 @@ Services are organized in Acuity under these categories:
 ## Stylist Availability
 
 Both Virginia and Kim offer the same services. Clients can select their preferred stylist during booking:
-- Virginia (Calendar ID: 7785532)
-- Kim (Calendar ID: 8172243)
+- Virginia (Calendar ID: 13484734)
+- Kim (Calendar ID: 13484780)
+- Alyssa (Calendar ID: 13484805)

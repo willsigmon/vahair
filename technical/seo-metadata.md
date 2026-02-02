@@ -140,4 +140,4 @@ Ensure these details match on Google Business:
 - Phone: (919) 671-8353
 - Website: https://www.vahair.studio
 - Hours: As listed above
-- Appointment URL: https://vahair.as.me
+- Appointment URL: https://app.acuityscheduling.com/schedule.php?owner=38274584

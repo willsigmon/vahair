@@ -1,13 +1,15 @@
 # Acuity Scheduling Integration Guide
 
-> How to embed vahair's Acuity booking system into the new website
+> How to embed vahair's Acuity booking system into the website
 
 ## Account Details
 
 | Item | Value |
 |------|-------|
-| **Booking URL** | https://vahair.as.me/ |
+| **Booking URL** | https://app.acuityscheduling.com/schedule.php?owner=38274584 |
 | **Account Owner** | Virginia Page & Co. Hair Studio |
+| **Account Type** | Standalone (migrated from Squarespace-connected 2026-02-02) |
+| **Owner ID** | 38274584 |
 | **Timezone** | America/New_York |
 | **Time Format** | 12-hour (AM/PM) |
 
@@ -21,7 +23,7 @@ Embed the full scheduler directly on your appointments page:
 
 ```html
 <iframe
-  src="https://vahair.as.me/"
+  src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
   title="Schedule Appointment"
   width="100%"
   height="800"
@@ -33,7 +35,7 @@ Embed the full scheduler directly on your appointments page:
 ```html
 <div style="width: 100%; max-width: 1000px; margin: 0 auto;">
   <iframe
-    src="https://vahair.as.me/"
+    src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
     title="Schedule Appointment"
     width="100%"
     height="800"
@@ -54,7 +56,7 @@ Add a floating "Book Now" button that opens scheduler in a modal:
 <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
 
 <!-- Add button anywhere -->
-<a href="https://vahair.as.me/" class="acuity-embed-button" style="
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584" class="acuity-embed-button" style="
   background: #000;
   color: #fff;
   padding: 12px 24px;
@@ -72,16 +74,17 @@ Simple links to the booking page (opens in new tab):
 
 ```html
 <!-- Generic booking -->
-<a href="https://vahair.as.me/" target="_blank">Book an Appointment</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584" target="_blank">Book an Appointment</a>
 
 <!-- Specific stylist -->
-<a href="https://vahair.as.me/?calendarID=7785532" target="_blank">Book with Virginia</a>
-<a href="https://vahair.as.me/?calendarID=8172243" target="_blank">Book with Kim</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484734" target="_blank">Book with Virginia</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484780" target="_blank">Book with Kim</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484805" target="_blank">Book with Alyssa</a>
 
 <!-- Specific service category -->
-<a href="https://vahair.as.me/schedule.php?appointmentType=category:Color" target="_blank">Book Color Service</a>
-<a href="https://vahair.as.me/schedule.php?appointmentType=category:Haircuts" target="_blank">Book Haircut</a>
-<a href="https://vahair.as.me/schedule.php?appointmentType=category:Waxing" target="_blank">Book Waxing</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Color" target="_blank">Book Color Service</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Haircuts" target="_blank">Book Haircut</a>
+<a href="https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing" target="_blank">Book Waxing</a>
 ```
 
 ---
@@ -90,8 +93,9 @@ Simple links to the booking page (opens in new tab):
 
 | Stylist | Calendar ID | Direct URL |
 |---------|-------------|------------|
-| Virginia | 7785532 | `https://vahair.as.me/?calendarID=7785532` |
-| Kim | 8172243 | `https://vahair.as.me/?calendarID=8172243` |
+| Virginia | 13484734 | `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484734` |
+| Kim | 13484780 | `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484780` |
+| Alyssa | 13484805 | `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484805` |
 
 ---
 
@@ -99,10 +103,10 @@ Simple links to the booking page (opens in new tab):
 
 | Category | URL |
 |----------|-----|
-| All Services | `https://vahair.as.me/` |
-| Color Services | `https://vahair.as.me/schedule.php?appointmentType=category:Color` |
-| Haircuts | `https://vahair.as.me/schedule.php?appointmentType=category:Haircuts` |
-| Waxing | `https://vahair.as.me/schedule.php?appointmentType=category:Waxing` |
+| All Services | `https://app.acuityscheduling.com/schedule.php?owner=38274584` |
+| Color Services | `https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Color` |
+| Haircuts | `https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Haircuts` |
+| Waxing | `https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing` |
 
 ---
 
@@ -130,10 +134,10 @@ To customize the booking experience, log into Acuity admin and adjust:
 
 ## Implementation Recommendation
 
-For the new site, I recommend:
+For the new site, we use:
 
 1. **Appointments page:** Full iframe embed
-2. **Homepage:** "Book Now" button linking directly to vahair.as.me
+2. **Homepage:** "Book Now" button linking directly to Acuity
 3. **Services page:** Link each service to its booking category
 4. **About page:** Link each stylist bio to their direct booking URL
 

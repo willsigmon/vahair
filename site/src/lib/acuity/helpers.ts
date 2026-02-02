@@ -11,8 +11,8 @@ import type {
   NextSlot,
 } from './types';
 
-/** Acuity scheduler base URL */
-const ACUITY_BASE_BOOKING_URL = 'https://vahair.as.me';
+/** Acuity scheduler base URL - Standalone account */
+const ACUITY_BASE_BOOKING_URL = 'https://app.acuityscheduling.com/schedule.php?owner=38274584';
 
 // ─────────────────────────────────────────────────────────────
 // Date/Time Formatting
@@ -109,7 +109,7 @@ export function transformCalendar(calendar: AcuityCalendar): Stylist {
     name: calendar.name,
     image: image || PLACEHOLDER_IMAGE,
     description: calendar.description || '',
-    bookingUrl: `${ACUITY_BASE_BOOKING_URL}/?calendarID=${calendar.id}`,
+    bookingUrl: `${ACUITY_BASE_BOOKING_URL}&calendarID=${calendar.id}`,
   };
 }
 
@@ -122,7 +122,7 @@ export function transformAppointmentType(apt: AcuityAppointmentType): Service {
     duration: apt.duration,
     price: apt.price ? `$${apt.price}` : 'Consultation',
     category: apt.category || 'Other',
-    bookingUrl: apt.schedulingUrl || `${ACUITY_BASE_BOOKING_URL}/schedule.php?appointmentType=${apt.id}`,
+    bookingUrl: apt.schedulingUrl || `${ACUITY_BASE_BOOKING_URL}&appointmentType=${apt.id}`,
   };
 }
 

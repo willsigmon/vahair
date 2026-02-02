@@ -8,7 +8,7 @@
 
 ### Call-to-Action
 - Button: "Book Now"
-- Link: https://vahair.as.me
+- Link: https://app.acuityscheduling.com/schedule.php?owner=38274584
 
 ## Navigation Menu
 1. About

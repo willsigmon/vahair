@@ -137,7 +137,7 @@ Potential reasons to migrate:
 ## Acuity Integration Summary
 
 **Simplest approach:**
-1. Homepage: "Book Now" button → `https://vahair.as.me`
+1. Homepage: "Book Now" button → `https://app.acuityscheduling.com/schedule.php?owner=38274584`
 2. Appointments page: Full iframe embed
 3. Services page: Each service links to its Acuity category
 4. About page: Each stylist links to their calendar

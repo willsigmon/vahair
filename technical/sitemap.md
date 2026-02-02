@@ -99,7 +99,7 @@
 
 | Destination | URL | Where Used |
 |-------------|-----|------------|
-| Acuity Booking | https://vahair.as.me | Book Now buttons |
+| Acuity Booking | https://app.acuityscheduling.com/schedule.php?owner=38274584 | Book Now buttons |
 | Instagram | [TBD] | Social icons |
 | Facebook | [TBD] | Social icons |
 | YouTube | [TBD] | Social icons |

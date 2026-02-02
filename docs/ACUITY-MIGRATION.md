@@ -2,8 +2,8 @@
 
 > Migrating from Squarespace-connected Acuity to standalone Acuity account
 
-**Migration Date:** _________________
-**Status:** PENDING - Waiting for new Acuity account setup
+**Migration Date:** 2026-02-02
+**Status:** IN PROGRESS - Account created, updating code
 
 ---
 
@@ -19,16 +19,16 @@
 
 ---
 
-## New Configuration (To Be Filled In)
+## New Configuration (COMPLETED)
 
 | Item | Value |
 |------|-------|
-| **New Booking URL** | `https://____________.as.me/` |
-| **Virginia Calendar ID** | ________________ |
-| **Kim Calendar ID** | ________________ |
-| **Alyssa Calendar ID** | ________________ |
-| **ACUITY_USER_ID** | ________________ |
-| **ACUITY_API_KEY** | ________________ |
+| **New Booking URL** | `https://app.acuityscheduling.com/schedule.php?owner=38274584` |
+| **Virginia Calendar ID** | `13484734` |
+| **Kim Calendar ID** | `13484780` |
+| **Alyssa Calendar ID** | `13484805` |
+| **ACUITY_USER_ID** | `38274584` |
+| **ACUITY_API_KEY** | `1d51bbb610e887799f6fba08051b76` |
 | **Account Type** | Standalone |
 
 ---
@@ -57,9 +57,9 @@ Create 3 calendars matching current setup:
 
 | Stylist | Role | Old ID | New ID |
 |---------|------|--------|--------|
-| Virginia Page Watkins | Owner & Stylist | 7785532 | _______ |
-| Kim Latham | Stylist | 8172243 | _______ |
-| Alyssa | Color Specialist | 13454517 | _______ |
+| Virginia Page Watkins | Owner & Stylist | 7785532 | 13484734 |
+| Kim Latham | Stylist | 8172243 | 13484780 |
+| Alyssa | Color Specialist | 13454517 | 13484805 |
 
 ### Step 5: Create Appointment Types (Services)
 Recreate all services and **assign to correct calendars**:
@@ -279,8 +279,8 @@ Replace calendar IDs individually (they may differ):
 
 | Phase | Status | Date |
 |-------|--------|------|
-| Account Setup | PENDING | |
-| Code Updates | BLOCKED | |
-| Testing | BLOCKED | |
-| Deploy | BLOCKED | |
-| Go-Live | BLOCKED | |
+| Account Setup | ✅ COMPLETE | 2026-02-02 |
+| Code Updates | ✅ COMPLETE | 2026-02-02 |
+| Testing | IN PROGRESS | 2026-02-02 |
+| Deploy | PENDING | |
+| Go-Live | PENDING | |

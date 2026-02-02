@@ -2,18 +2,19 @@
 
 ## Booking System
 
-**Platform:** Acuity Scheduling
-**Booking URL:** https://vahair.as.me/
+**Platform:** Acuity Scheduling (Standalone Account)
+**Booking URL:** https://app.acuityscheduling.com/schedule.php?owner=38274584
+**Owner ID:** 38274584
 **Timezone:** America/New_York (Eastern)
 
 ---
 
 ## How to Book
 
-1. Visit vahair.as.me or click "Book Now" on the website
+1. Visit the booking page or click "Book Now" on the website
 2. Select service category (Color, Haircuts, or Waxing)
 3. Choose specific service
-4. Select preferred stylist (Virginia or Kim)
+4. Select preferred stylist (Virginia, Kim, or Alyssa)
 5. Pick available date and time
 6. Enter contact information
 7. Confirm booking
@@ -24,8 +25,9 @@
 
 | Stylist | Calendar ID | Direct Link |
 |---------|-------------|-------------|
-| Virginia | 7785532 | `vahair.as.me/?calendarID=7785532` |
-| Kim | 8172243 | `vahair.as.me/?calendarID=8172243` |
+| Virginia | 13484734 | `schedule.php?owner=38274584&calendarID=13484734` |
+| Kim | 13484780 | `schedule.php?owner=38274584&calendarID=13484780` |
+| Alyssa | 13484805 | `schedule.php?owner=38274584&calendarID=13484805` |
 
 ---
 

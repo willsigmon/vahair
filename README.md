@@ -8,7 +8,7 @@
 |------|-------|
 | **Current URL** | https://www.vahair.studio/ |
 | **Platform** | Squarespace (migrating away) |
-| **Booking System** | Acuity Scheduling (vahair.as.me) |
+| **Booking System** | Acuity Scheduling (standalone, owner=38274584) |
 | **Location** | 104 South Main Street, Rolesville, NC 27571 |
 | **Phone** | (919) 671-8353 |
 | **Email** | vacohairstudio@gmail.com |
@@ -37,8 +37,9 @@ vahair/
 
 | Name | Experience | Calendar ID |
 |------|------------|-------------|
-| **Virginia Page Watkins** | 14 years | 7785532 |
-| **Kim Latham** | 20 years | 8172243 |
+| **Virginia Page Watkins** | 14 years | 13484734 |
+| **Kim Latham** | 20 years | 13484780 |
+| **Alyssa** | 6 years | 13484805 |
 
 ## Business Hours
 

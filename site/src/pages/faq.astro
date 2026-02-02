@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+// FAQ data for display and schema
 const faqs = [
   {
     question: "How do I book an appointment?",
@@ -49,6 +50,20 @@ const faqs = [
   title="FAQ | Virginia Page & Co. Hair Studio"
   description="Frequently asked questions about appointments, services, and policies at Virginia Page & Co. Hair Studio in Rolesville, NC."
 >
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })} />
+
   <!-- Hero -->
   <section class="pt-16 pb-24 px-6">
     <div class="max-w-4xl mx-auto text-center">

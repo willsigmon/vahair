@@ -31,15 +31,14 @@ const stylists = getAllStylists();
         Select your service and preferred stylist to schedule your visit.
       </p>
 
-      <!-- Animated quick links with gold glow -->
+      <!-- Animated quick links - scroll to scheduler with stylist pre-selected -->
       <div class="flex flex-wrap justify-center gap-4 animate-fade-up" style="animation-delay: 0.4s;">
         {stylists.map((stylist, i) => (
-          <a
-            href={stylist.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
-            class="btn btn-outline group relative overflow-hidden hover:shadow-[0_0_25px_rgba(196,169,98,0.3)] transition-shadow duration-300"
+          <button
+            type="button"
+            data-stylist={stylist.name.toLowerCase()}
+            aria-label={`Book appointment with ${stylist.name}`}
+            class="quick-book-btn btn btn-outline group relative overflow-hidden hover:shadow-[0_0_25px_rgba(196,169,98,0.3)] transition-shadow duration-300"
             style={`animation-delay: ${0.4 + i * 0.1}s;`}
           >
             <span class="relative z-10">Book with {stylist.name}</span>
@@ -47,7 +46,7 @@ const stylists = getAllStylists();
             <span class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
               Book with {stylist.name}
             </span>
-          </a>
+          </button>
         ))}
       </div>
     </div>
@@ -84,13 +83,25 @@ const stylists = getAllStylists();
   </section>
 
   <!-- Acuity Embed with better container -->
-  <section class="py-12 px-6 bg-[--color-cream]">
+  <section class="py-12 px-6 bg-[--color-cream]" id="scheduler">
     <div class="max-w-5xl mx-auto">
+      <!-- Stylist Filter -->
+      <div class="text-center mb-8">
+        <p class="text-sm text-[--color-taupe] mb-4">Filter by stylist:</p>
+        <div class="stylist-filter">
+          <button class="filter-pill active" data-calendar="all">All Stylists</button>
+          <button class="filter-pill" data-calendar="virginia">Virginia</button>
+          <button class="filter-pill" data-calendar="kim">Kim</button>
+          <button class="filter-pill" data-calendar="alyssa">Alyssa</button>
+        </div>
+      </div>
+
       <div class="relative">
         <!-- Decorative border -->
         <div class="absolute -inset-3 bg-gradient-to-r from-[--color-gold]/20 via-[--color-blush]/20 to-[--color-gold]/20 rounded-2xl blur-sm"></div>
         <div class="acuity-container relative bg-white rounded-xl shadow-2xl shadow-[--color-charcoal]/5 overflow-hidden">
           <iframe
+            id="acuity-embed"
             src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
             title="Schedule Appointment with Virginia Page & Co. Hair Studio"
             width="100%"
@@ -98,6 +109,14 @@ const stylists = getAllStylists();
             loading="lazy"
             class="acuity-iframe w-full"
           ></iframe>
+
+          <!-- Loading overlay -->
+          <div id="acuity-loader" class="absolute inset-0 bg-white/90 flex items-center justify-center transition-opacity duration-500">
+            <div class="text-center">
+              <div class="w-12 h-12 border-4 border-[--color-gold]/20 border-t-[--color-gold] rounded-full animate-spin mx-auto mb-4"></div>
+              <p class="text-[--color-taupe] text-sm">Loading scheduler...</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -216,6 +235,7 @@ const stylists = getAllStylists();
   /* Responsive Acuity iframe */
   .acuity-container {
     min-height: 600px;
+    position: relative;
   }
 
   .acuity-iframe {
@@ -234,4 +254,111 @@ const stylists = getAllStylists();
       min-height: 800px;
     }
   }
+
+  /* Stylist filter pills */
+  .stylist-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter-pill {
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-cream-dark);
+    background: white;
+    color: var(--color-charcoal);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-pill:hover {
+    border-color: var(--color-gold);
+  }
+
+  .filter-pill.active {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: white;
+  }
 </style>
+
+<script>
+  // Stylist calendar IDs
+  const CALENDARS = {
+    all: '',
+    virginia: '13484734',
+    kim: '13484780',
+    alyssa: '13484805'
+  };
+
+  // Hide loader when iframe loads
+  const iframe = document.getElementById('acuity-embed') as HTMLIFrameElement;
+  const loader = document.getElementById('acuity-loader');
+
+  if (iframe && loader) {
+    iframe.addEventListener('load', () => {
+      setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }, 500);
+    });
+  }
+
+  // Handle stylist filter selection
+  function updateScheduler(calendarId: string) {
+    const baseUrl = 'https://app.acuityscheduling.com/schedule.php?owner=38274584';
+    const newUrl = calendarId ? `${baseUrl}&calendarID=${calendarId}` : baseUrl;
+
+    if (iframe) {
+      // Show loader
+      if (loader) {
+        loader.style.display = 'flex';
+        loader.style.opacity = '1';
+      }
+      iframe.src = newUrl;
+    }
+
+    // Update active pill
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.classList.remove('active');
+    });
+    const activePill = document.querySelector(`[data-calendar="${calendarId || 'all'}"]`);
+    if (activePill) activePill.classList.add('active');
+  }
+
+  // Attach click handlers to filter pills
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const calendarId = target.dataset.calendar === 'all' ? '' : CALENDARS[target.dataset.calendar as keyof typeof CALENDARS];
+      updateScheduler(calendarId);
+    });
+  });
+
+  // Check for URL params to pre-select stylist
+  const urlParams = new URLSearchParams(window.location.search);
+  const stylistParam = urlParams.get('stylist');
+  if (stylistParam && CALENDARS[stylistParam as keyof typeof CALENDARS]) {
+    updateScheduler(CALENDARS[stylistParam as keyof typeof CALENDARS]);
+  }
+
+  // Quick book buttons - scroll to scheduler and pre-select stylist
+  document.querySelectorAll('.quick-book-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const stylistName = target.dataset.stylist;
+      if (stylistName && CALENDARS[stylistName as keyof typeof CALENDARS]) {
+        updateScheduler(CALENDARS[stylistName as keyof typeof CALENDARS]);
+      }
+      // Smooth scroll to scheduler section
+      const schedulerSection = document.getElementById('scheduler');
+      if (schedulerSection) {
+        schedulerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>

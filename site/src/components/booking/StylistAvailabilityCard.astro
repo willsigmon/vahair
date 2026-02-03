@@ -23,15 +23,15 @@ const {
   class: className = '',
 } = Astro.props;
 
-const bookingUrl = `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=${id}`;
+const stylistKey = name.toLowerCase();
 ---
 
-<a
-  href={bookingUrl}
-  target="_blank"
-  rel="noopener noreferrer"
-  class:list={['stylist-card group relative block', className]}
+<button
+  type="button"
+  class:list={['stylist-card group relative block w-full text-left cursor-pointer', className]}
   data-stylist-card
+  data-calendar-id={id}
+  data-stylist-key={stylistKey}
 >
   <!-- Glow effect on hover - enhanced gold intensity -->
   <div class="card-glow absolute -inset-1 rounded-xl bg-gradient-to-r from-[--color-gold]/0 via-[--color-gold]/40 to-[--color-gold]/0 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
@@ -83,16 +83,48 @@ const bookingUrl = `https://app.acuityscheduling.com/schedule.php?owner=38274584
       ))}
     </div>
   </div>
-</a>
+</button>
 
 <script>
-  // Add click celebration animation
+  // Stylist card click - scroll to scheduler and pre-select stylist
   document.querySelectorAll('[data-stylist-card]').forEach((card) => {
     card.addEventListener('click', (e) => {
       const confettiContainer = card.querySelector('.confetti-container');
       if (confettiContainer) {
         confettiContainer.classList.remove('hidden');
-        // Don't prevent default - let the link work
+      }
+
+      // Get the calendar ID from the card
+      const calendarId = (card as HTMLElement).dataset.calendarId;
+      const stylistKey = (card as HTMLElement).dataset.stylistKey;
+
+      // Update the iframe if it exists
+      const iframe = document.getElementById('acuity-embed') as HTMLIFrameElement;
+      const loader = document.getElementById('acuity-loader');
+
+      if (iframe && calendarId) {
+        // Show loader
+        if (loader) {
+          loader.style.display = 'flex';
+          loader.style.opacity = '1';
+        }
+        iframe.src = `https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=${calendarId}`;
+      }
+
+      // Update filter pills if they exist
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.classList.remove('active');
+        if ((pill as HTMLElement).dataset.calendar === stylistKey) {
+          pill.classList.add('active');
+        }
+      });
+
+      // Smooth scroll to scheduler section
+      const schedulerSection = document.getElementById('scheduler');
+      if (schedulerSection) {
+        setTimeout(() => {
+          schedulerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
       }
     });
   });

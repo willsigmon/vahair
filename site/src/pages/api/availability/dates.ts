@@ -18,7 +18,7 @@ import {
 // CORS and security headers for API responses
 const corsHeaders = {
   'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': 'https://www.vahair.studio',
+  'Access-Control-Allow-Origin': 'https://vahair.studio',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
   'X-Content-Type-Options': 'nosniff',

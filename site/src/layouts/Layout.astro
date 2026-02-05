@@ -11,7 +11,7 @@ interface Props {
 const { title, description = "Expert hair services in downtown Rolesville, NC. Cuts, color, highlights, Brazilian blowouts & more. Book online today." } = Astro.props;
 
 // Build canonical URL
-const canonicalURL = new URL(Astro.url.pathname, 'https://www.vahair.studio');
+const canonicalURL = new URL(Astro.url.pathname, 'https://vahair.studio');
 ---
 
 <!doctype html>
@@ -30,14 +30,14 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.vahair.studio');
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL.href} />
-    <meta property="og:image" content="https://www.vahair.studio/images/hero.jpg" />
+    <meta property="og:image" content="https://vahair.studio/images/hero.jpg" />
     <meta property="og:site_name" content="Virginia Page & Co. Hair Studio" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://www.vahair.studio/images/hero.jpg" />
+    <meta name="twitter:image" content="https://vahair.studio/images/hero.jpg" />
 
     <!-- Geo -->
     <meta name="geo.region" content="US-NC" />
@@ -59,7 +59,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.vahair.studio');
       "@context": "https://schema.org",
       "@type": "HairSalon",
       "name": "Virginia Page & Co. Hair Studio",
-      "url": "https://www.vahair.studio",
+      "url": "https://vahair.studio",
       "telephone": "+1-919-671-8353",
       "email": "vacohairstudio@gmail.com",
       "address": {
@@ -76,10 +76,10 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.vahair.studio');
         "longitude": -78.4577758
       },
       "openingHoursSpecification": [
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:15", "closes": "17:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:15", "closes": "16:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:30", "closes": "18:00"},
-        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "14:00"}
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:30", "closes": "17:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "09:30", "closes": "16:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:30", "closes": "18:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:30", "closes": "14:00"}
       ],
       "priceRange": "$$"
     }

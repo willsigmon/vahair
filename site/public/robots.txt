@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.vahair.studio/sitemap.xml
+Sitemap: https://vahair.studio/sitemap.xml

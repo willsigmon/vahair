@@ -25,7 +25,7 @@ export const STYLISTS: Stylist[] = [
     fullName: 'Virginia Page Watkins',
     image: '/images/virginia.jpg',
     role: 'Owner & Stylist',
-    experience: '14 years of experience',
+    experience: '17 years of experience',
     imagePosition: 'object-[center_20%]',
     bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&calendarID=13484734',
   },

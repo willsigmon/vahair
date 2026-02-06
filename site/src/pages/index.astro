@@ -137,47 +137,43 @@ const stylists = getHomepageStylists();
     </div>
   </section>
 
-  <!-- Stylists Preview -->
-  <section class="py-32 px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {stylists.map((stylist) => (
-          <div class="group relative overflow-hidden bg-[--color-cream-dark] border-glow-gold">
-            <div class="aspect-square">
-              <img
-                src={stylist.image}
-                alt={`${stylist.fullName}, ${stylist.role}`}
-                class:list={[
-                  'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105',
-                  stylist.imagePosition,
-                ]}
-              />
-            </div>
-            <!-- Gradient overlay for text legibility -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-40% to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <span class="text-xs tracking-widest uppercase text-[--color-gold] mb-2 block font-bold">
-                {stylist.role}
-              </span>
-              <h3 class="text-3xl mb-2 text-white" style="font-family: var(--font-display);">
-                {stylist.fullName}
-              </h3>
-              <NextSlotBadge calendarId={stylist.id} class="mb-4" />
-              <a
-                href={stylist.bookingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
-                class="btn bg-[--color-gold] text-[--color-charcoal] border-[--color-gold] hover:bg-[--color-gold-light] hover:border-[--color-gold-light] hover:shadow-[0_0_30px_rgba(196,169,98,0.4)] transition-all duration-300"
-              >
-                Book with {stylist.name}
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+	  <!-- Stylists Preview -->
+	  <section class="py-32 px-6">
+	    <div class="max-w-7xl mx-auto">
+	      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+	        {stylists.map((stylist) => (
+	          <div class="group relative overflow-hidden bg-[--color-cream-dark] border-glow-gold rounded-3xl">
+	            <div class="aspect-[4/5]">
+	              <img
+	                src={stylist.image}
+	                alt={`Portrait of ${stylist.fullName}`}
+	                class:list={[
+	                  'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105',
+	                  stylist.imagePosition,
+	                ]}
+	              />
+	            </div>
+	            <!-- Gradient overlay for text legibility -->
+	            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-40% to-transparent"></div>
+	            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+	              <h3 class="text-4xl mb-6 text-white leading-none" style="font-family: var(--font-display);">
+	                {stylist.name}
+	              </h3>
+	              <a
+	                href={stylist.bookingUrl}
+	                target="_blank"
+	                rel="noopener noreferrer"
+	                aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
+	                class="btn bg-[--color-gold] text-[--color-charcoal] border-[--color-gold] hover:bg-[--color-gold-light] hover:border-[--color-gold-light] hover:shadow-[0_0_30px_rgba(196,169,98,0.4)] transition-all duration-300"
+	              >
+	                Book {stylist.name}
+	              </a>
+	            </div>
+	          </div>
+	        ))}
+	      </div>
+	    </div>
+	  </section>
 
   <!-- Testimonials -->
   <section class="py-32 px-6 bg-[--color-cream-dark]">

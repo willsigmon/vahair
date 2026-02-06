@@ -10,6 +10,13 @@ const stylists = getAllStylists();
   title="Book Online | Virginia Page & Co. Hair Studio"
   description="Schedule your next hair appointment online. Choose your stylist and service for instant booking."
 >
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://embed.acuityscheduling.com" />
+    <link rel="dns-prefetch" href="https://embed.acuityscheduling.com" />
+    <link rel="preconnect" href="https://app.acuityscheduling.com" />
+    <script src="https://embed.acuityscheduling.com/js/embed.js" defer></script>
+  </Fragment>
+
   <!-- Compact Hero -->
   <section class="pt-16 pb-8 px-6 relative overflow-hidden">
     <!-- Ambient decoration -->
@@ -121,26 +128,22 @@ const stylists = getAllStylists();
   <!-- Acuity Embed -->
   <section class="pb-12 px-6 bg-[--color-cream]" id="scheduler">
     <div class="max-w-5xl mx-auto">
-      <div class="relative">
-        <!-- Decorative border -->
-        <div class="absolute -inset-3 bg-gradient-to-r from-[--color-gold]/20 via-[--color-blush]/20 to-[--color-gold]/20 rounded-2xl blur-sm"></div>
-        <div class="acuity-container relative bg-[--color-cream] rounded-xl shadow-2xl shadow-[--color-charcoal]/5 overflow-hidden">
-          <iframe
-            id="acuity-embed"
-            src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
-            title="Schedule Appointment with Virginia Page & Co. Hair Studio"
-            width="100%"
-            frameBorder="0"
-            loading="lazy"
-            class="acuity-iframe w-full"
-          ></iframe>
+      <div class="acuity-container relative">
+        <iframe
+          id="acuity-embed"
+          src="https://app.acuityscheduling.com/schedule.php?owner=38274584"
+          title="Schedule Appointment with Virginia Page & Co. Hair Studio"
+          width="100%"
+          frameBorder="0"
+          loading="lazy"
+          class="acuity-iframe w-full"
+        ></iframe>
 
-          <!-- Loading overlay -->
-          <div id="acuity-loader" class="absolute inset-0 bg-white/90 flex items-center justify-center transition-opacity duration-500">
-            <div class="text-center">
-              <div class="w-12 h-12 border-4 border-[--color-gold]/20 border-t-[--color-gold] rounded-full animate-spin mx-auto mb-4"></div>
-              <p class="text-[--color-taupe] text-sm">Loading scheduler...</p>
-            </div>
+        <!-- Loading overlay -->
+        <div id="acuity-loader" class="absolute inset-0 bg-[--color-cream]/95 backdrop-blur-sm flex items-center justify-center transition-opacity duration-500">
+          <div class="text-center">
+            <div class="w-12 h-12 border-4 border-[--color-gold]/20 border-t-[--color-gold] rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-[--color-taupe] text-sm">Loading scheduler...</p>
           </div>
         </div>
       </div>
@@ -221,24 +224,25 @@ const stylists = getAllStylists();
 
   /* Responsive Acuity iframe */
   .acuity-container {
-    min-height: 600px;
     position: relative;
+    min-height: 700px;
   }
 
   .acuity-iframe {
-    border: none;
-    height: calc(100svh - 120px);
-    min-height: 600px;
-    max-height: 1000px;
+    display: block;
+    width: 100%;
+    border: 0;
+    /* embed.js will auto-size height; these are safe fallbacks. */
+    min-height: 700px;
+    background: var(--color-cream);
   }
 
   @media (min-width: 768px) {
     .acuity-container {
-      min-height: 800px;
+      min-height: 900px;
     }
     .acuity-iframe {
-      height: 900px;
-      min-height: 800px;
+      min-height: 900px;
     }
   }
 

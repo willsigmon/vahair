@@ -113,7 +113,7 @@ Add to homepage for rich search results:
 | Page | Title | Description |
 |------|-------|-------------|
 | Home | Virginia & Co. Hair Studio \| Rolesville, NC | Expert hair services in downtown Rolesville. Cuts, color, highlights & more. Book online today. |
-| About | About Us \| Virginia & Co. Hair Studio | Meet Virginia and Kim - over 30 years combined experience bringing out your best look in Rolesville, NC. |
+| About | About Us \| Virginia & Co. Hair Studio | Meet Virginia and Kim - over 40 years combined experience bringing out your best look in Rolesville, NC. |
 | Services | Hair Services & Pricing \| Virginia & Co. Hair Studio | Haircuts from $30, color from $75, Brazilian blowouts & more. View our full service menu and pricing. |
 | Contact | Contact & Hours \| Virginia & Co. Hair Studio | Visit us at 104 South Main Street, Rolesville NC. Open Tue-Fri. Call (919) 671-8353 or email us. |
 | Appointments | Book Online \| Virginia & Co. Hair Studio | Schedule your next hair appointment online. Choose your stylist and service for instant booking. |

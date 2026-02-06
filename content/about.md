@@ -25,7 +25,7 @@ Virginia has been doing hair for 14 years, starting her career at age 19 at Mitc
 
 ### Kim Latham
 **Role:** Stylist
-**Experience:** 20 years in hair styling
+**Experience:** 24 years in hair styling
 
 **Background:**
 - Previously worked with Virginia at Mitchell's Hairstyling in Raleigh
@@ -33,7 +33,7 @@ Virginia has been doing hair for 14 years, starting her career at age 19 at Mitc
 
 **Personal:**
 - Married to Joe
-- Has one son, Joseph (age 6)
+- Has one son, Joseph (age 9)
 
 ---
 

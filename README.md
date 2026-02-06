@@ -38,7 +38,7 @@ vahair/
 | Name | Experience | Calendar ID |
 |------|------------|-------------|
 | **Virginia Page Watkins** | 14 years | 13484734 |
-| **Kim Latham** | 20 years | 13484780 |
+| **Kim Latham** | 24 years | 13484780 |
 | **Alyssa** | 6 years | 13484805 |
 
 ## Business Hours

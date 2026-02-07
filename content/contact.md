@@ -33,10 +33,10 @@ United States
 | Wednesday | 9:30 AM - 5:00 PM |
 | Thursday | 9:30 AM - 4:00 PM |
 | Friday | 9:30 AM - 2:00 PM |
-| Saturday | Closed |
+| Saturday | Alternating weeks · 9:00 AM - 5:00 PM (Alyssa) |
 | Sunday | Closed |
 
-**Note:** Hours updated to match website business hours (Tue-Fri).
+**Note:** Saturday availability depends on Alyssa's rotating schedule (Week A/B).
 
 ---
 

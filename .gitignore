@@ -29,4 +29,5 @@ npm-debug.log*
 # Local artifacts
 output/
 .playwright-cli/
+.playwright-mcp/
 site/test-results/

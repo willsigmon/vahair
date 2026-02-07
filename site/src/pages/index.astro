@@ -9,16 +9,16 @@ const stylists = getHomepageStylists();
 
 <Layout title="Virginia Page & Co. Hair Studio | Rolesville, NC Hair Salon">
   <!-- Hero Section - Full Viewport -->
-	  <section class="relative min-h-[100svh] flex items-center justify-center -mt-24">
-	    <!-- Background -->
-	    <div class="absolute inset-0">
-	      <img
-	        src="/images/hero.jpg"
-	        alt="Virginia Page & Co. Hair Studio - professional styling environment"
-	        class="w-full h-full object-cover"
-	      />
-	      <div class="absolute inset-0 hero-overlay"></div>
-	    </div>
+  <section class="relative min-h-[100svh] flex items-center justify-center -mt-24">
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <img
+        src="/images/hero.jpg"
+        alt="Virginia Page & Co. Hair Studio - professional styling environment"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 hero-overlay"></div>
+    </div>
 
     <!-- Content -->
     <div class="relative z-10 text-center text-white px-6 max-w-5xl">
@@ -137,43 +137,43 @@ const stylists = getHomepageStylists();
     </div>
   </section>
 
-	  <!-- Stylists Preview -->
-	  <section class="py-32 px-6">
-	    <div class="max-w-7xl mx-auto">
-	      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-	        {stylists.map((stylist) => (
-	          <div class="group relative overflow-hidden bg-[--color-cream-dark] border-glow-gold rounded-3xl">
-	            <div class="aspect-[4/5]">
-	              <img
-	                src={stylist.image}
-	                alt={`Portrait of ${stylist.fullName}`}
-	                class:list={[
-	                  'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105',
-	                  stylist.imagePosition,
-	                ]}
-	              />
-	            </div>
-	            <!-- Gradient overlay for text legibility -->
-	            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-40% to-transparent"></div>
-	            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
-	              <h3 class="text-4xl mb-6 text-white leading-none" style="font-family: var(--font-display);">
-	                {stylist.name}
-	              </h3>
-	              <a
-	                href={stylist.bookingUrl}
-	                target="_blank"
-	                rel="noopener noreferrer"
-	                aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
-	                class="btn bg-[--color-gold] text-[--color-charcoal] border-[--color-gold] hover:bg-[--color-gold-light] hover:border-[--color-gold-light] hover:shadow-[0_0_30px_rgba(196,169,98,0.4)] transition-all duration-300"
-	              >
-	                Book {stylist.name}
-	              </a>
-	            </div>
-	          </div>
-	        ))}
-	      </div>
-	    </div>
-	  </section>
+  <!-- Stylists Preview -->
+  <section class="py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {stylists.map((stylist) => (
+          <div class="group relative overflow-hidden bg-[--color-cream-dark] border-glow-gold rounded-3xl">
+            <div class="aspect-[4/5]">
+              <img
+                src={stylist.image}
+                alt={`Portrait of ${stylist.fullName}`}
+                class:list={[
+                  'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105',
+                  stylist.imagePosition,
+                ]}
+              />
+            </div>
+            <!-- Gradient overlay for text legibility -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 via-40% to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <h3 class="text-4xl mb-6 text-white leading-none" style="font-family: var(--font-display);">
+                {stylist.name}
+              </h3>
+              <a
+                href={stylist.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Book appointment with ${stylist.name} (opens in new window)`}
+                class="btn bg-[--color-gold] text-[--color-charcoal] border-[--color-gold] hover:bg-[--color-gold-light] hover:border-[--color-gold-light] hover:shadow-[0_0_30px_rgba(196,169,98,0.4)] transition-all duration-300"
+              >
+                Book {stylist.name}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Testimonials -->
   <section class="py-32 px-6 bg-[--color-cream-dark]">
@@ -281,20 +281,24 @@ const stylists = getHomepageStylists();
               <span>Tuesday</span>
               <span>9:30 AM – 5:00 PM</span>
             </div>
-	            <div class="flex justify-between py-3 border-b border-[--color-charcoal-light]">
-	              <span>Wednesday</span>
-	              <span>9:30 AM – 5:00 PM</span>
-	            </div>
-	            <div class="flex justify-between py-3 border-b border-[--color-charcoal-light]">
-	              <span>Thursday</span>
-	              <span>9:30 AM – 4:00 PM</span>
-	            </div>
+            <div class="flex justify-between py-3 border-b border-[--color-charcoal-light]">
+              <span>Wednesday</span>
+              <span>9:30 AM – 5:00 PM</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-[--color-charcoal-light]">
+              <span>Thursday</span>
+              <span>9:30 AM – 4:00 PM</span>
+            </div>
             <div class="flex justify-between py-3 border-b border-[--color-charcoal-light]">
               <span>Friday</span>
               <span>9:30 AM – 2:00 PM</span>
             </div>
+            <div class="flex justify-between py-3 border-b border-[--color-charcoal-light]">
+              <span>Saturday</span>
+              <span class="text-sm">Alternating weeks · 9 AM – 5 PM</span>
+            </div>
             <div class="flex justify-between py-3 border-b border-[--color-charcoal-light] text-[--color-taupe]">
-              <span>Saturday – Sunday</span>
+              <span>Sunday</span>
               <span>Closed</span>
             </div>
           </div>

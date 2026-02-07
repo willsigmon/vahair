@@ -630,9 +630,15 @@ a:hover {
   font-size: 0.875rem !important;
 }
 
-/* Hide Acuity branding (if allowed by plan) */
+/* De-emphasize Acuity branding */
 .powered-by-acuity {
-  display: none !important;
+  opacity: 0.3 !important;
+  font-size: 0.7em !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.powered-by-acuity:hover {
+  opacity: 0.6 !important;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

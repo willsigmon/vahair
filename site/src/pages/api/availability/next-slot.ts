@@ -94,8 +94,11 @@ export const GET: APIRoute = async ({ url }) => {
         for (const date of dates) {
           const times = await getAvailableTimes(calendarIdNum, basicType.id, date);
           if (times && times.length > 0) {
-            // Found available slot
-            return formatNextSlot(times[0].time);
+            // Found available slot.
+            // IMPORTANT: Cache the raw datetime string, and format it at response time.
+            // Otherwise, we cache a pre-formatted display string that can be wrong
+            // depending on the server timezone / future formatting changes.
+            return times[0].time;
           }
         }
 
@@ -104,9 +107,11 @@ export const GET: APIRoute = async ({ url }) => {
       CacheTTL.NEXT_SLOT
     );
 
+    const nextSlot: NextSlot | null = result.data ? formatNextSlot(result.data) : null;
+
     return new Response(
       JSON.stringify({
-        data: result.data,
+        data: nextSlot,
         cached: result.cached,
         cachedAt: result.cachedAt,
         stale: result.stale,

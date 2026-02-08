@@ -56,14 +56,14 @@ const fallbackServices: ServiceCategory[] = [
     ],
   },
   {
-    name: 'Waxing',
-    slug: 'waxing',
+    name: 'Extras',
+    slug: 'extras',
     services: [
-      { id: 12, name: 'Brazilian Blowout', price: '$325+', duration: 120, category: 'Waxing', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing' },
-      { id: 13, name: 'Eyebrow Tint', price: '$45', duration: 15, category: 'Waxing', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing' },
-      { id: 14, name: 'Eyebrow Wax', price: '$25', duration: 15, category: 'Waxing', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing' },
-      { id: 15, name: 'Lip Wax', price: '$25', duration: 15, category: 'Waxing', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing' },
-      { id: 16, name: 'Chin Wax', price: '$25', duration: 15, category: 'Waxing', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Waxing' },
+      { id: 12, name: 'Brazilian Blowout', price: '$325+', duration: 120, category: 'Extras', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Extras' },
+      { id: 13, name: 'Eyebrow Tint', price: '$45', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Extras' },
+      { id: 14, name: 'Eyebrow Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Extras' },
+      { id: 15, name: 'Lip Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Extras' },
+      { id: 16, name: 'Chin Wax', price: '$25', duration: 15, category: 'Extras', description: '', bookingUrl: 'https://app.acuityscheduling.com/schedule.php?owner=38274584&appointmentType=category:Extras' },
     ],
   },
 ];

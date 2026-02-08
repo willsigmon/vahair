@@ -150,6 +150,14 @@ const stylists = getAllStylists();
     </div>
   </section>
 
+  <!-- Single source of truth for calendar IDs (consumed by the inline script below) -->
+  <script type="application/json" id="stylist-calendars">
+    {JSON.stringify({
+      all: '',
+      ...Object.fromEntries(stylists.map((s) => [s.name.toLowerCase(), String(s.id)])),
+    })}
+  </script>
+
   <!-- Info Cards with icons -->
   <section class="py-20 px-6 bg-[--color-cream-dark]">
     <div class="max-w-5xl mx-auto">
@@ -327,13 +335,15 @@ const stylists = getAllStylists();
 </style>
 
 <script>
-  // Stylist calendar IDs
-  const CALENDARS: Record<string, string> = {
-    all: '',
-    virginia: '13484734',
-    kim: '13484780',
-    alyssa: '13484805'
-  };
+  // Stylist calendar IDs (from centralized stylist data)
+  const CALENDARS: Record<string, string> = (() => {
+    const el = document.getElementById('stylist-calendars');
+    try {
+      return el?.textContent ? JSON.parse(el.textContent) : { all: '' };
+    } catch {
+      return { all: '' };
+    }
+  })();
 
   // Hide loader when iframe loads
   const iframe = document.getElementById('acuity-embed') as HTMLIFrameElement;
